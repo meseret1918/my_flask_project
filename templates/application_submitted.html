@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Application Submitted</title>
+  {% include 'bootstrap.html' %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head> 
+<body>
+  {% include 'nav.html' %}
+  <div class="container">
+    {% include 'banner.html' %}
+    <div class="container">
+      <p class="my-3">Application Submitted for the role of <b>{{ job.title }}</b> at SoftwareCareerLink has been successfully submitted.</p>
+      <br>
+      <b>Full Name:</b>
+      <p>{{ data.full_name }}</p>
+      <b>Email:</b>
+      <p>{{ data.email }}</p>
+      <b>LinkedIn URL:</b>
+      <p>{{ data.linkedin_url }}</p>
+      <b>Education:</b>
+      <p>{{ data.education }}</p>
+      <b>Work Experience:</b>
+      <p>{{ data.work_experience }} years</p>
+      <b>Resume URL:</b>
+      <p>
+        {% if data.resume_url %}
+          <a href="{{ data.resume_url }}" target="_blank">{{ data.resume_url }}</a>
+        {% else %}
+          None
+        {% endif %}
+      </p>
+      <br>
+      <!-- Explore Other Jobs Button -->
+      <a href="{{ url_for('home') }}" class="btn btn-primary">
+        <i class="fas fa-briefcase"></i> Explore Other Jobs
+      </a>
+    </div>
+    {% include 'footer.html' %}
+  </div>
+</body>
+</html>

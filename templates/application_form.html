@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'bootstrap.html' %}
+  <title>Application Form</title>
+</head>
+<body>
+  <div class="container">
+    <h4>Application Form</h4>
+    <form action="/job/{{ job.id }}/apply" method="post">
+      <div class="mb-2">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" placeholder="Your Name" required class="form-control">
+      </div>
+      <div class="mb-2">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="your-email@example.com" required class="form-control">
+      </div>
+      <div class="mb-2">
+        <label for="linkedin_url">LinkedIn URL:</label>
+        <input type="url" id="linkedin_url" name="linkedin_url" placeholder="https://www.linkedin.com/in/your-profile/" required class="form-control">
+      </div>
+      <div class="mb-2">
+        <label for="education">Education:</label>
+        <input type="text" id="education" name="education" placeholder="Your Qualification" required class="form-control">
+      </div>
+      <div class="mb-2">
+        <label for="work_experience">Work Experience (Years):</label>
+        <input type="number" id="work_experience" name="work_experience" min="0" placeholder="Enter your experience in years" required class="form-control">
+      </div>
+      <div class="mb-2">
+        <label for="resume_url">Resume URL:</label>
+        <input type="url" id="resume_url" name="resume_url" placeholder="Link to your resume" required class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Apply</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}View Application{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Application Details</h2>
+    <div>
+        <p><strong>ID:</strong> {{ application.id }}</p>
+        <p><strong>Full Name:</strong> {{ application.full_name }}</p>
+        <p><strong>Email:</strong> {{ application.email }}</p>
+        <p><strong>LinkedIn URL:</strong> <a href="{{ application.linkedin_url }}">{{ application.linkedin_url }}</a></p>
+        <p><strong>Education:</strong> {{ application.education }}</p>
+        <p><strong>Work Experience:</strong> {{ application.work_experience }}</p>
+        <p><strong>Resume URL:</strong> <a href="{{ application.resume_url }}">Resume</a></p>
+        <p><strong>Status:</strong> {{ application.status }}</p>
+
+<div class="container">
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+{% endblock %}

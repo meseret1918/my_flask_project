@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Add Job{% endblock %}
+
+{% block content %}
+<h1>Add Job</h1>
+
+<!-- Internal CSS for styling the form -->
+<style>
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    textarea {
+        height: 100px;
+        resize: vertical;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .error {
+        color: red;
+        font-size: 0.875em;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<form action="{{ url_for('add_job') }}" method="post" onsubmit="return validateForm()">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" placeholder="Enter job title" required><br>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location" placeholder="Enter job location" required><br>
+
+    <label for="salary">Salary:</label>
+    <input type="text" id="salary" name="salary" placeholder="Enter job salary" required>
+    <div id="salary-error" class="error"></div><br>
+
+    <label for="currency">Currency:</label>
+    <input type="text" id="currency" name="currency" placeholder="Enter currency" required><br>
+
+    <label for="responsibilities">Responsibilities:</label>
+    <textarea id="responsibilities" name="responsibilities" placeholder="Enter job responsibilities" required></textarea><br>
+
+    <label for="requirements">Requirements:</label>
+    <textarea id="requirements" name="requirements" placeholder="Enter job requirements" required></textarea><br>
+
+    <button type="submit">Add</button>
+</form>
+
+<script>
+function validateForm() {
+    var salaryInput = document.getElementById('salary');
+    var salaryValue = salaryInput.value;
+    var salaryError = document.getElementById('salary-error');
+    var isValid = true;
+
+    // Remove any previous error message
+    salaryError.textContent = '';
+
+    // Check if the salary is a valid number
+    if (!/^\d+(\.\d{1,2})?$/.test(salaryValue)) {
+        salaryError.textContent = 'Invalid salary value. Please enter a numeric value with up to two decimal places.';
+        isValid = false;
+    }
+
+    return isValid;
+}
+</script>
+{% endblock %}

@@ -1,30 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  {% include 'bootstrap.html' %}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <title>Software Careers</title>
-</head>
-<body>
-  {% include 'nav.html' %}
-  <div class="container"> 
-    <h2 class="text-center my-3">Software Careers</h2>
-    {% include 'banner.html' %}
-    <h3 class="text-center my-3">About SoftwareCareerLink</h3>
-    
-        <p class="lead">SoftwareCareerLink is a platform designed to connect software engineers, particularly from Ethiopia, with career opportunities in the tech industry. It offers job listings, application management, and career resources to help professionals find and secure positions that match their skills and goals.
+{% extends "base.html" %}
 
-          Focused on empowering users, SoftwareCareerLink provides a streamlined interface to explore job opportunities, manage applications, and advance their careers. It aims to simplify the job search process and enhance career growth for software engineers seeking to make impactful connections in the tech field.</p>
-      </div>
-      
-    <h2 class="text-center my-3">Job Openings</h2>
-    <div>
-      {% for job in jobs %}
-        {% include 'jobitem.html' %}
-      {% endfor %}
-    </div>
-    <div/>
-  </div>
-  {% include 'footer.html' %}
-</body>
-</html>
+{% block title %}Home - SoftwareCareerLink{% endblock %}
+
+{% block content %}
+<!-- Main Content Specific to Home Page -->
+
+{% include 'banner.html' %}
+<h3 class="text-center my-3">About SoftwareCareerLink</h3>
+<p class="lead">SoftwareCareerLink is a platform designed to connect software engineers, particularly from Ethiopia, with career opportunities in the tech industry.</p>
+
+<h2 class="text-center my-3">Job Openings</h2>
+<div>
+    {% for job in jobs %}
+    {% include 'jobitem.html' %}
+    {% endfor %}
+</div>
+{% endblock %}

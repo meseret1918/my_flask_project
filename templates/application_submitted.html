@@ -1,42 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Application Submitted</title>
-  {% include 'bootstrap.html' %}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head> 
-<body>
-  {% include 'nav.html' %}
-  <div class="container">
-    {% include 'banner.html' %}
-    <div class="container">
-      <p class="my-3">Application Submitted for the role of <b>{{ job.title }}</b> at SoftwareCareerLink has been successfully submitted.</p>
-      <br>
-      <b>Full Name:</b>
-      <p>{{ data.full_name }}</p>
-      <b>Email:</b>
-      <p>{{ data.email }}</p>
-      <b>LinkedIn URL:</b>
-      <p>{{ data.linkedin_url }}</p>
-      <b>Education:</b>
-      <p>{{ data.education }}</p>
-      <b>Work Experience:</b>
-      <p>{{ data.work_experience }} years</p>
-      <b>Resume URL:</b>
-      <p>
-        {% if data.resume_url %}
-          <a href="{{ data.resume_url }}" target="_blank">{{ data.resume_url }}</a>
-        {% else %}
-          None
-        {% endif %}
-      </p>
-      <br>
-      <!-- Explore Other Jobs Button -->
-      <a href="{{ url_for('home') }}" class="btn btn-primary">
-        <i class="fas fa-briefcase"></i> Explore Other Jobs
-      </a>
+{% extends "base.html" %}
+
+{% block title %}
+    Application Submitted - SoftwareCareerLink
+{% endblock %}
+
+{% block content %}
+<!-- Application Submitted Content -->
+<div class="container my-5">
+    <!-- Application Submission Details -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="text-center">Application Submitted</h4>
+            <p class="text-center my-3">Your application for the role of <b>{{ job.title }}</b> at SoftwareCareerLink has been successfully submitted.</p>
+              <p class="text-center my-3">We appreciate your interest and will review your application soon.</p>
+
+            <hr>
+
+            <!-- Application Data -->
+            <div class="mt-4">
+                <b>Full Name:</b>
+                <p>{{ data.full_name }}</p>
+
+                <b>Email:</b>
+                <p>{{ data.email }}</p>
+
+                <b>LinkedIn URL:</b>
+                <p>
+                    {% if data.linkedin_url %}
+                        <a href="{{ data.linkedin_url }}" target="_blank">{{ data.linkedin_url }}</a>
+                    {% else %}
+                        None
+                    {% endif %}
+                </p>
+
+                <b>Education:</b>
+                <p>{{ data.education }}</p>
+
+                <b>Work Experience:</b>
+                <p>{{ data.work_experience }} years</p>
+
+                <b>Resume URL:</b>
+                <p>
+                    {% if data.resume_url %}
+                        <a href="{{ data.resume_url }}" target="_blank">{{ data.resume_url }}</a>
+                    {% else %}
+                        None
+                    {% endif %}
+                </p>
+                <div class="container">
+                    <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to home</a>
+                </div>
+            </div>
     </div>
-    {% include 'footer.html' %}
-  </div>
-</body>
-</html>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Application Status{% endblock %}
+
+{% block content %}
+    <h2 class="my-4">Application Status</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Job ID: {{ application.job_id }}</h5>
+            <p class="card-text"><strong>Full Name:</strong> {{ application.full_name }}</p>
+            <p class="card-text"><strong>Email:</strong> {{ application.email }}</p>
+            <p class="card-text"><strong>Status:</strong> {{ application.status }}</p>
+        </div>
+    </div>
+{% endblock %}

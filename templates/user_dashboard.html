@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+    <h2 class="my-4">User Dashboard</h2>
+    <div class="alert alert-info" role="alert">
+        Welcome, {{ session.user_email }}!
+    </div>
+    <div class="list-group">
+        {% for application in applications %}
+            <a href="{{ url_for('application_status', id=application.id) }}" class="list-group-item list-group-item-action">
+                Check Status for Job ID {{ application.job_id }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Internal CSS for enhanced styling with minimized gap -->
+<style>
+    /* Reducing the margin between the navbar and the body content */
+    body {
+        margin-top: 1rem; /* Adjust this value to your desired gap */
+    }
+
+    .admin-dashboard {
+        margin: 0px auto; /* Reduced top margin */
+        max-width: 1200px;
+        background-color: white;
+        padding: 0px; /* Reduced padding */
+        border-radius: 0px;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-header {
+        background-color: #008080;
+        color: auto;
+        font-weight: bold;
+    }
+
+    .table-row:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .table-row:hover {
+        background-color: #e9ecef;
+    }
+
+    .status {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        text-transform: capitalize;
+    }
+
+    .status-pending {
+        background-color: #ffc107;
+        color: white;
+    }
+
+    .status-accepted {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .status-rejected {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-custom {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .btn-update {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.5rem; /* Reduced top margin */
+    }
+
+    .table th, .table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .table th {
+        background-color: #008080;
+        color: white;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    /* Custom Modal Styles */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 5px;
+    }
+
+    .modal-header {
+        padding: 2px 16px;
+        background-color: #008080;
+        color: white;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .modal-body {
+        padding: 2px 16px;
+    }
+
+    .modal-footer {
+        padding: 2px 16px;
+        background-color: #f1f1f1;
+        border-top: 1px solid #ddd;
+        text-align: right;
+    }
+
+    .btn-modal {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-yes {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .btn-no {
+        background-color: #dc3545;
+        color: white;
+    }
+</style>
+
+<div class="admin-dashboard">
+    <h2 class="mb-4">Submitted Applications</h2>
+    
+    <table class="table">
+        <thead class="table-header">
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>LinkedIn</th>
+                <th>Education</th>
+                <th>Experience</th>
+                <th>Resume</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+            <tr class="table-row">
+                <td>{{ application.id }}</td>
+                <td>{{ application.full_name }}</td>
+                <td>{{ application.email }}</td>
+                <td><a href="{{ application.linkedin_url }}" target="_blank">LinkedIn</a></td>
+                <td>{{ application.education }}</td>
+                <td>{{ application.work_experience }}</td>
+                <td><a href="{{ application.resume_url }}" target="_blank">View</a></td>
+                <td>
+                    <span class="status status-{{ application.status }}">
+                        {{ application.status | capitalize }}
+                    </span>
+                </td>
+                <td>
+                    <div class="action-buttons">
+                        <!-- Status Update Form -->
+                        <form action="{{ url_for('update_status', app_id=application.id) }}" method="post" style="display:inline;" onsubmit="return showUpdateModal();">
+                            <select name="status" class="form-control form-control-sm">
+                                <option value="pending" {% if application.status == 'pending' %}selected{% endif %}>Pending</option>
+                                <option value="accepted" {% if application.status == 'accepted' %}selected{% endif %}>Accepted</option>
+                                <option value="rejected" {% if application.status == 'rejected' %}selected{% endif %}>Rejected</option>
+                            </select>
+                            <button type="submit" class="btn btn-update btn-custom btn-sm">Update</button>
+                        </form>
+
+                        <!-- Delete Form -->
+                        <form action="{{ url_for('delete_application', app_id=application.id) }}" method="post" style="display:inline;" onsubmit="return showDeleteModal();">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-delete btn-custom btn-sm">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal for Update Confirmation -->
+<div id="updateModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Confirm Update</h2>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to update the status of this application?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-modal btn-yes" onclick="confirmUpdate()">Yes</button>
+            <button class="btn-modal btn-no" onclick="closeUpdateModal()">No</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Delete Confirmation -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Confirm Delete</h2>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete this application? This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-modal btn-yes" onclick="confirmDelete()">Yes</button>
+            <button class="btn-modal btn-no" onclick="closeDeleteModal()">No</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let formToSubmit = null;
+
+    function showUpdateModal() {
+        formToSubmit = event.target;
+        document.getElementById('updateModal').style.display = 'block';
+        return false; // Prevent form submission
+    }
+
+    function showDeleteModal() {
+        formToSubmit = event.target;
+        document.getElementById('deleteModal').style.display = 'block';
+        return false; // Prevent form submission
+    }
+
+    function confirmUpdate() {
+        if (formToSubmit) {
+            formToSubmit.submit();
+        }
+        closeUpdateModal();
+    }
+
+    function confirmDelete() {
+        if (formToSubmit) {
+            formToSubmit.submit();
+        }
+        closeDeleteModal();
+    }
+
+    function closeUpdateModal() {
+        document.getElementById('updateModal').style.display = 'none';
+        formToSubmit = null;
+    }
+
+    function closeDeleteModal() {
+        document.getElementById('deleteModal').style.display = 'none';
+        formToSubmit = null;
+    }
+
+    // Close modals if clicked outside
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            closeUpdateModal();
+            closeDeleteModal();
+        }
+    }
+</script>
+<div class="container">
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!-- manage_jobs.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Jobs</title>
+</head>
+<body>
+    <h1>Manage Jobs</h1>
+    {% if jobs %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Job Title</th>
+                    <th>Location</th>
+                    <th>Salary</th>
+                    <th>Currency</th>
+                    <th>Responsibilities</th>
+                    <th>Requirements</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr>
+                    <td>{{ job.id }}</td>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.location }}</td>
+                    <td>{{ job.salary }}</td>
+                    <td>{{ job.currency }}</td>
+                    <td>{{ job.responsibilities }}</td>
+                    <td>{{ job.requirements }}</td>
+                    <td>
+                        <!-- Add buttons or links for editing and deleting jobs if needed -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No jobs found.</p>
+    {% endif %}
+</body>
+</html>

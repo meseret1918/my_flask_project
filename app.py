@@ -18,7 +18,7 @@ db.init_app(app)
 @app.route("/")
 def home():
     jobs = load_jobs_from_db()
-    return render_template("home.html", jobs=jobs, show_back_button=False)
+    return render_template("home.html", jobs=jobs)
 
 @app.route("/api/jobs")
 def list_jobs():
@@ -30,7 +30,7 @@ def list_job(id):
     job = load_job_from_db(id)
     if not job:
         return "Not Found", 404
-    return render_template("jobpage.html", job=job, show_back_button=True)
+    return render_template("jobpage.html", job=job)
 
 @app.route("/job/<int:id>/apply", methods=['POST'])
 def apply_job(id):
@@ -119,21 +119,24 @@ def view_application(app_id):
     application = Application.query.get_or_404(app_id)
     return render_template('view_application.html', application=application)
 
-@app.route('/admin/applications/update_status/<int:app_id>', methods=['POST'])
-def update_status(app_id):
-    if not session.get('admin_logged_in'):
-        flash('Please log in to access this page.', 'warning')
-        return redirect(url_for('admin_login'))
-
+@app.route('/admin/applications/update/<int:app_id>', methods=['GET', 'POST'])
+def update_application(app_id):
     application = Application.query.get_or_404(app_id)
-    new_status = request.form.get('status')
-    if new_status in ['pending', 'accepted', 'rejected']:
-        application.status = new_status
+    
+    if request.method == 'POST':
+        new_status = request.form.get('status').lower()  # Convert to lowercase to standardize
+        if new_status not in ['pending', 'accepted', 'rejected']:
+            flash('Invalid status update.', 'danger')
+            return redirect(url_for('view_applications'))  # Ensure this is the correct route
+
+        application.status = new_status.capitalize()  # Capitalize for display purposes
         db.session.commit()
         flash('Application status updated successfully!', 'success')
-    else:
-        flash('Invalid status update.', 'danger')
-    return redirect(url_for('view_applications'))
+        return redirect(url_for('view_applications'))  # Ensure this is the correct route
+
+    return render_template('update_application.html', application=application)
+
+
 
 @app.route('/admin/applications/delete/<int:app_id>', methods=['POST'])
 def delete_application(app_id):

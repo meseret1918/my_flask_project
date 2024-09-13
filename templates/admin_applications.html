@@ -192,7 +192,7 @@
                 <td>
                     <div class="action-buttons">
                         <!-- Status Update Form -->
-                        <form action="{{ url_for('update_status', app_id=application.id) }}" method="post" style="display:inline;" onsubmit="return showUpdateModal();">
+                        <form action="{{ url_for('update_application', app_id=application.id) }}" method="post" style="display:inline;" onsubmit="return showUpdateModal();">
                             <select name="status" class="form-control form-control-sm">
                                 <option value="pending" {% if application.status == 'pending' %}selected{% endif %}>Pending</option>
                                 <option value="accepted" {% if application.status == 'accepted' %}selected{% endif %}>Accepted</option>

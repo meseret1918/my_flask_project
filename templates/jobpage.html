@@ -1,7 +1,6 @@
-{% extends "base.html" %}
-{% block content %}
+{% include "nav.html" %}
+<div class="container mt-5">
 <h1 class="my-4">Job Details</h1>
-<div class="container">
         <h2>{{ job.title }}</h2>
         <p><strong>Location:</strong> {{ job.location }}</p>
         <p><strong>Responsibilities:</strong> {{ job.responsibilities }}</p>
@@ -10,4 +9,3 @@
      <!-- Include the application form -->
      {% include 'application_form.html' %}
 </div>
-{% endblock %}

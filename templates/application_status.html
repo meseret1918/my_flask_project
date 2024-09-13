@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 
 {% block title %}Application Status{% endblock %}
 
@@ -12,4 +12,8 @@
             <p class="card-text"><strong>Status:</strong> {{ application.status }}</p>
         </div>
     </div>
+    <div class="container">
+        <a href="{{ url_for('user_dashboard') }}">Back to User Dashboard</a>
+    </div>
+
 {% endblock %}

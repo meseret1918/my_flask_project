@@ -1,8 +1,6 @@
-{% extends "base.html" %}
+{% include "nav.html" %}
 
 {% block title %}Admin Login{% endblock %}
-
-{% block content %}
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -58,7 +56,6 @@
         background-color: #0056b3;
     }
 </style>
-
 <div class="container">
     <h2>Admin Login</h2>
     <form action="/admin/login" method="post">
@@ -71,6 +68,6 @@
             <input type="password" id="password" name="password" required class="form-control">
         </div>
         <button type="submit" class="btn-primary">Login</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to home</a>
     </form>
 </div>
-{% endblock %}

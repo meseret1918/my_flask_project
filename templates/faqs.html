@@ -1,26 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% include 'bootstrap.html' %}
-    <title>FAQs - SoftwareCareerLink</title>
-    
-</head>
-<body>
-    {% include 'nav.html' %}
-    <div class="container"> 
+{% extends "index.html" %}
+{% block title %}FAQs - SoftwareCareerLink{% endblock %}
+{% block content %} 
     <header>
-        <h1>Frequently Asked Questions</h1>
+        <h3>Frequently Asked Questions</h3>
         {% include 'banner.html' %}
     </header>
     <main>
         <section>
-            <h2>General Questions</h2>
+            <h4>General Questions</h4>
             <dl>
                 <dt>What is SoftwareCareerLink?</dt>
                 <dd>SoftwareCareerLink is a platform designed to help software engineers connect with career opportunities in the tech industry.</dd>
                 
-                <dt>How do I sign up?</dt>
-                <dd>You can sign up by clicking on the "Sign Up" button on the homepage and filling out the registration form.</dd>
+                <dt>How do I Check My Status?</dt>
+                <dd>You can Check by clicking on the "user_login" button on the homepage and enter email that apply from application_form.</dd>
 
                 <dt>What courses are offered?</dt>
                 <dd>We offer a range of courses from introductory programming to advanced data science and machine learning.</dd>
@@ -30,9 +23,7 @@
             </dl>
         </section>
     </main>
-    
     </footer>
     </div>
     {% include 'footer.html' %}
-</body>
-</html>
+{% endblock %}

@@ -33,6 +33,7 @@
             border-radius: 50%;
             margin-right: 10px;
         }
+        
     </style>
 </head>
 <body>
@@ -42,7 +43,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <div class="logo">
-                SE
+                SCL
             </div>
             SoftwareCareerLink
         </a>
@@ -58,13 +59,30 @@
                         <a class="dropdown-item" href="/user/login">User Login</a>
                     </div>
                 </li>
+                {% elif request.endpoint == 'admin_login' %}
+                <!-- Show Login Icon on Home Page -->
+                <li class="nav-item Logout">
+                        <a class="Logout-item" href="/admin/login">Logout</a>
+                </li>
+
+                {% elif request.endpoint == 'admin_dashboard' %}
+                <!-- Show Login Icon on Home Page -->
+                <li class="nav-item Logout">
+                        <a class="Logout-item" href="/admin/login">Logout</a>
+                </li>
+
+                {% elif request.endpoint == 'user_dashboard' %}
+                <!-- Show Login Icon on Home Page -->
+                <li class="nav-item Logout">
+                    <a class="dropdown-item" href="/user/login">Logout</a>
+                </li>
             {% else %}
-                <!-- Show Back Icon on Other Pages -->
+                <!-- Show Back Icon on Other Pages
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:history.back()">
                         <i class="fas fa-arrow-left"></i> Back
                     </a>
-                </li>
+                </li>-->
             {% endif %}
         </ul>
     </div>
@@ -76,17 +94,18 @@
     <!-- Content from child templates will be inserted here -->
     {% endblock %}
 </div>
-
-<!-- Footer -->
+   <div class="container">
 <footer class="py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="{{ url_for('courses') }}" class="nav-link px-2 text-muted">Courses</a></li>
-        <li class="nav-item"><a href="{{ url_for('pricing') }}" class="nav-link px-2 text-muted">Pricing</a></li>
-        <li class="nav-item"><a href="{{ url_for('faqs') }}" class="nav-link px-2 text-muted">FAQs</a></li>
-    </ul>
-    <p class="text-center text-muted">© Meseret 2024 @Alx Africa</p>
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="{{ url_for('courses') }}" class="nav-link px-2 text-muted">Courses</a></li>
+      <li class="nav-item"><a href="{{ url_for('pricing') }}" class="nav-link px-2 text-muted">Pricing</a></li>
+      <li class="nav-item"><a href="{{ url_for('faqs') }}" class="nav-link px-2 text-muted">FAQs</a></li>
+  </ul>
+  <p class="text-center text-muted">© Meseret 2024 @Alx Africa</p>
 </footer>
+</div>
+
 
 <!-- Bootstrap JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

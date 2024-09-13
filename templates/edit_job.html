@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 <head>
     {% block content %}
     <meta charset="UTF-8">
@@ -82,8 +82,5 @@
         <textarea id="requirements" name="requirements" required>{{ job['requirements'] }}</textarea><br>
         <button type="submit">Update Job</button>
     </form>
-    <div class="container">
-        <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
-    </div>
 </body>
 {% endblock %}

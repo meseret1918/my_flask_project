@@ -1,7 +1,13 @@
-{% extends "base.html" %}
+
+{% extends "index.html" %}
+
+{% block title %}Submitted Applications{% endblock %}
 
 {% block content %}
-
+<h2 class="text-center">Submitted Applications</h2>
+<div class="container">
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+</div>
 <!-- Internal CSS for enhanced styling with minimized gap -->
 <style>
     /* Reducing the margin between the navbar and the body content */
@@ -17,7 +23,6 @@
         border-radius: 0px;
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     }
-
     .table-header {
         background-color: #008080;
         color: auto;
@@ -154,10 +159,7 @@
         color: white;
     }
 </style>
-
 <div class="admin-dashboard">
-    <h2 class="mb-4">Submitted Applications</h2>
-    
     <table class="table">
         <thead class="table-header">
             <tr>
@@ -241,9 +243,7 @@
             <button class="btn-modal btn-yes" onclick="confirmDelete()">Yes</button>
             <button class="btn-modal btn-no" onclick="closeDeleteModal()">No</button>
         </div>
-    </div>
 </div>
-
 <script>
     let formToSubmit = null;
 
@@ -291,7 +291,4 @@
         }
     }
 </script>
-<div class="container">
-    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
-</div>
 {% endblock %}

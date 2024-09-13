@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 
 {% block title %}Add Job{% endblock %}
 
@@ -55,7 +55,7 @@
         margin-bottom: 10px;
     }
 </style>
-
+<body>
 <form action="{{ url_for('add_job') }}" method="post" onsubmit="return validateForm()">
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" placeholder="Enter job title" required><br>
@@ -77,8 +77,10 @@
     <textarea id="requirements" name="requirements" placeholder="Enter job requirements" required></textarea><br>
 
     <button type="submit">Add</button>
+    
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
 </form>
-
+</body>
 <script>
 function validateForm() {
     var salaryInput = document.getElementById('salary');

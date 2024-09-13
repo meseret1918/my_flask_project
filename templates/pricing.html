@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% include 'bootstrap.html' %}
-    <div class="container"> 
-    <title>Pricing - SoftwareCareerLink</title>
-    {% include 'nav.html' %}
-</head>
-<body>
+{% extends "index.html" %}
+{% block title %}Pricing - SoftwareCareerLink{% endblock %}
+{% block content %}
     <header>
         <h3>Pricing Plans</h3>
     </header>
@@ -17,13 +11,11 @@
             <p>We offer flexible pricing plans to suit your needs.</p>
             <ul>
                 <li><strong>Basic:</strong> Free - Access to limited courses</li>
-                <li><strong>Standard:</strong> $49/month - Access to all courses and community support</li>
-                <li><strong>Premium:</strong> $99/month - Access to all courses, community support, and one-on-one mentoring</li>
+                <li><strong>Standard:</strong> 1000 ETB/month - Access to all courses and community support</li>
+                <li><strong>Premium:</strong> 2000 ETB/month - Access to all courses, community support, and one-on-one mentoring</li>
             </ul>
         </section>
     </main>
     <div/>
     {% include 'footer.html' %}
-    </footer>
-</body>
-</html>
+{% endblock %}

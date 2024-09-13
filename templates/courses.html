@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% include 'bootstrap.html' %}
-    <div class="container"> 
-    <title>Courses - SoftwareCareerLink</title>
-    {% include 'nav.html' %}
-</head>
-<body>
+{% extends "index.html" %}
+
+{% block title %}Courses - SoftwareCareerLink{% endblock %}
+
+{% block content %}
     <header>
-        <h1>Our Courses</h1>
+        <h3>Our Courses</h3>
     </header>
     {% include 'banner.html' %}
     <main>
         <section>
-            <h2>Available Courses</h2>
+            <h4>Available Courses</h4>
             <p>Explore a variety of courses designed to enhance your skills and help you advance your career in the tech industry.</p>
             <ul>
                 <li>Introduction to Software Engineering</li>
@@ -25,6 +21,4 @@
     </main>
     <div/>
     {% include 'footer.html' %}
-    </footer>
-</body>
-</html>
+{% endblock %}

@@ -3,17 +3,17 @@
 {% block title %}Application Status{% endblock %}
 
 {% block content %}
-    <h2 class="my-4">Application Status</h2>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Job ID: {{ application.job_id }}</h5>
-            <p class="card-text"><strong>Full Name:</strong> {{ application.full_name }}</p>
-            <p class="card-text"><strong>Email:</strong> {{ application.email }}</p>
-            <p class="card-text"><strong>Status:</strong> {{ application.status }}</p>
+    <h2 class="my-4">Application Status</h2>  {# Displays the heading for the application status page #}
+    <div class="card">  {# Creates a card container for displaying application details #}
+        <div class="card-body">  {# Styles the card content area #}
+            <h5 class="card-title">Job ID: {{ application.job_id }}</h5>  {# Shows the job ID associated with the application #}
+            <p class="card-text"><strong>Full Name:</strong> {{ application.full_name }}</p>  {# Displays the applicant's full name #}
+            <p class="card-text"><strong>Email:</strong> {{ application.email }}</p>  {# Displays the applicant's email address #}
+            <p class="card-text"><strong>Status:</strong> {{ application.status }}</p>  {# Displays the current status of the application #}
         </div>
     </div>
-    <div class="container">
-        <a href="{{ url_for('user_dashboard') }}">Back to User Dashboard</a>
+    <div class="container">  {# Creates a container for the navigation link #}
+        <a href="{{ url_for('user_dashboard') }}">Back to User Dashboard</a>  {# Provides a link to navigate back to the user dashboard #}
     </div>
 
 {% endblock %}

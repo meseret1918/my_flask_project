@@ -2,28 +2,26 @@
 {% block title %}FAQs - SoftwareCareerLink{% endblock %}
 {% block content %} 
     <header>
-        <h3>Frequently Asked Questions</h3>
-        {% include 'banner.html' %}
+        <h3>Frequently Asked Questions</h3>  {# Heading for the FAQ section #}
+        {% include 'banner.html' %}  {# Includes a banner for visual appeal #}
     </header>
     <main>
         <section>
-            <h4>General Questions</h4>
+            <h4>General Questions</h4>  {# Subheading for the FAQ section #}
             <dl>
-                <dt>What is SoftwareCareerLink?</dt>
-                <dd>SoftwareCareerLink is a platform designed to help software engineers connect with career opportunities in the tech industry.</dd>
+                <dt>What is SoftwareCareerLink?</dt>  {# Question about the platform #}
+                <dd>SoftwareCareerLink is a platform designed to help software engineers connect with career opportunities in the tech industry.</dd>  {# Answer to the question #}
                 
-                <dt>How do I Check My Status?</dt>
-                <dd>You can Check by clicking on the "user_login" button on the homepage and enter email that apply from application_form.</dd>
+                <dt>How do I Check My Status?</dt>  {# Question about checking application status #}
+                <dd>You can Check by clicking on the "user_login" button on the homepage and enter email that apply from application_form.</dd>  {# Answer to the question #}
 
-                <dt>What courses are offered?</dt>
-                <dd>We offer a range of courses from introductory programming to advanced data science and machine learning.</dd>
+                <dt>What courses are offered?</dt>  {# Question about available courses #}
+                <dd>We offer a range of courses from introductory programming to advanced data science and machine learning.</dd>  {# Answer to the question #}
                 
-                <dt>How do I access my courses?</dt>
-                <dd>Once you've signed up and logged in, you can access your courses from the "My Courses" section of your dashboard.</dd>
+                <dt>How do I access my courses?</dt>  {# Question about accessing courses #}
+                <dd>Once you've signed up and logged in, you can access your courses from the "My Courses" section of your dashboard.</dd>  {# Answer to the question #}
             </dl>
         </section>
     </main>
-    </footer>
-    </div>
-    {% include 'footer.html' %}
+    {% include 'footer.html' %}  {# Includes footer content for consistency across pages #}
 {% endblock %}

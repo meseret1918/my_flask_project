@@ -1,22 +1,25 @@
-{% extends "index.html" %}
+{% extends "index.html" %}  {# Inherits the base layout from index.html #}
 
-{% block title %}View Application{% endblock %}
+{% block title %}View Application{% endblock %}  {# Sets the title of the page to "View Application" #}
 
-{% block content %}
+{% block content %}  {# Begins the content block for this specific page #}
 
-<div class="container">
-    <h2>Application Details</h2>
+<div class="container">  {# Begins the container div for the application details #}
+    <h2>Application Details</h2>  {# Heading for the application details section #}
     <div>
-        <p><strong>ID:</strong> {{ application.id }}</p>
-        <p><strong>Full Name:</strong> {{ application.full_name }}</p>
-        <p><strong>Email:</strong> {{ application.email }}</p>
-        <p><strong>LinkedIn URL:</strong> <a href="{{ application.linkedin_url }}">{{ application.linkedin_url }}</a></p>
-        <p><strong>Education:</strong> {{ application.education }}</p>
-        <p><strong>Work Experience:</strong> {{ application.work_experience }}</p>
-        <p><strong>Resume URL:</strong> <a href="{{ application.resume_url }}">Resume</a></p>
-        <p><strong>Status:</strong> {{ application.status }}</p>
-
-<div class="container">
-    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        <p><strong>ID:</strong> {{ application.id }}</p>  {# Displays the application ID #}
+        <p><strong>Full Name:</strong> {{ application.full_name }}</p>  {# Displays the applicant's full name #}
+        <p><strong>Email:</strong> {{ application.email }}</p>  {# Displays the applicant's email address #}
+        <p><strong>LinkedIn URL:</strong> <a href="{{ application.linkedin_url }}">{{ application.linkedin_url }}</a></p>  {# Displays the LinkedIn URL as a clickable link #}
+        <p><strong>Education:</strong> {{ application.education }}</p>  {# Displays the applicant's education information #}
+        <p><strong>Work Experience:</strong> {{ application.work_experience }}</p>  {# Displays the applicant's work experience #}
+        <p><strong>Resume URL:</strong> <a href="{{ application.resume_url }}">Resume</a></p>  {# Displays the resume URL as a clickable link with text "Resume" #}
+        <p><strong>Status:</strong> {{ application.status }}</p>  {# Displays the current status of the application #}
+    </div>
 </div>
-{% endblock %}
+
+<div class="container">  {# Begins another container div for the back button #}
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>  {# Link to navigate back to the admin dashboard #}
+</div>
+
+{% endblock %}  {# Ends the content block #}

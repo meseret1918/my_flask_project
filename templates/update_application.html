@@ -3,10 +3,13 @@
 {% block title %}Update Application{% endblock %}
 
 {% block content %}
+<!-- Container for the content specific to updating an application -->
 <div class="container mt-5">
     <h2>Update Application: {{ application.full_name }}</h2>
+    <!-- Form to update the status of the application -->
     <form action="{{ url_for('update_application', app_id=application.id) }}" method="POST">
         <div class="mb-3">
+            <!-- Dropdown menu to select the new status of the application -->
             <label for="status" class="form-label">Status</label>
             <select id="status" name="status" class="form-select">
                 <option value="Pending" {% if application.status == 'Pending' %}selected{% endif %}>Pending</option>
@@ -14,8 +17,8 @@
                 <option value="Rejected" {% if application.status == 'Rejected' %}selected{% endif %}>Rejected</option>
             </select>
         </div>
+        <!-- Submit button to update the application -->
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
-    
 </div>
 {% endblock %}

@@ -1,66 +1,69 @@
-{% extends "index.html" %}
-{% block title %}User Login{% endblock %}
-{% block content %}
+{% extends "index.html" %}  {# Inherits the base layout from index.html #}
+
+{% block title %}User Login{% endblock %}  {# Sets the title of the page to "User Login" #}
+
+{% block content %}  {# Begins the content block for this specific page #}
 <style>
     body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        margin: 0;
-        padding: 0;
+        font-family: Arial, sans-serif;  {# Sets the font family for the page #}
+        background-color: #f8f9fa;  {# Sets a light grey background color for the page #}
+        margin: 0;  {# Removes default margin #}
+        padding: 0;  {# Removes default padding #}
     }
     .container {
-        max-width: 500px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 500px;  {# Sets a maximum width for the container #}
+        margin: 50px auto;  {# Centers the container horizontally and adds vertical margin #}
+        padding: 20px;  {# Adds padding inside the container #}
+        background-color: #ffffff;  {# Sets the background color to white #}
+        border-radius: 8px;  {# Rounds the corners of the container #}
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  {# Adds a subtle shadow effect #}
     }
     h1 {
-        color: #333;
-        margin-bottom: 20px;
+        color: #333;  {# Sets the text color to a dark grey #}
+        margin-bottom: 20px;  {# Adds bottom margin to the heading #}
     }
     .form-label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
+        display: block;  {# Displays the label as a block element #}
+        margin-bottom: 5px;  {# Adds bottom margin to the label #}
+        font-weight: bold;  {# Makes the label text bold #}
     }
     .form-control {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-bottom: 15px;
+        width: 100%;  {# Sets the input width to 100% of its parent container #}
+        padding: 10px;  {# Adds padding inside the input field #}
+        border: 1px solid #ced4da;  {# Adds a border with a light grey color #}
+        border-radius: 4px;  {# Rounds the corners of the input field #}
+        box-sizing: border-box;  {# Ensures padding and border are included in the total width #}
+        margin-bottom: 15px;  {# Adds bottom margin to the input field #}
     }
     .form-control:focus {
-        border-color: #80bdff;
-        outline: none;
-        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+        border-color: #80bdff;  {# Changes the border color when the input is focused #}
+        outline: none;  {# Removes the default outline #}
+        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);  {# Adds a subtle shadow effect when focused #}
     }
     .btn-primary {
-        background-color: #007bff;
-        border: none;
-        color: #ffffff;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
+        background-color: #007bff;  {# Sets the background color for the primary button #}
+        border: none;  {# Removes the default border #}
+        color: #ffffff;  {# Sets the text color to white #}
+        padding: 10px 20px;  {# Adds padding inside the button #}
+        font-size: 16px;  {# Sets the font size for the button text #}
+        border-radius: 4px;  {# Rounds the corners of the button #}
+        cursor: pointer;  {# Changes the cursor to a pointer when hovering over the button #}
+        text-align: center;  {# Centers the text inside the button #}
+        text-decoration: none;  {# Removes underline from the button text #}
     }
     .btn-primary:hover {
-        background-color: #0056b3;
+        background-color: #0056b3;  {# Changes the background color when hovering over the button #}
     }
 </style>
-<div class="container">
-    <h2>User Login</h2>
-    <form action="/user/login" method="post">
-        <div class="form-group">
-            <label for="email" class="form-label">Email:</label>
-            <input type="text" id="email" name="email" required class="form-control">
+<div class="container">  {# Begins the container div for the login form #}
+    <h2>User Login</h2>  {# Heading for the login page #}
+    <form action="/user/login" method="post">  {# Form to submit user login details #}
+        <div class="form-group">  {# Container for the form field #}
+            <label for="email" class="form-label">Email:</label>  {# Label for the email input field #}
+            <input type="text" id="email" name="email" required class="form-control">  {# Email input field with required validation #}
         </div>
-        <button type="submit" class="btn-primary">Login</button>
-        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to home</a>
+        <button type="submit" class="btn-primary">Login</button>  {# Submit button for the form #}
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to home</a>  {# Link to navigate back to the home page #}
     </form>
-{% endblock %}
+</div>
+{% endblock %}  {# Ends the content block #}

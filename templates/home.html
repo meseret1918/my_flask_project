@@ -5,14 +5,14 @@
 {% block content %}
 <!-- Main Content Specific to Home Page -->
 
-{% include 'banner.html' %}
+{% include 'banner.html' %}  {# Includes banner for visual appeal #}
 <h3 class="text-center my-3">About SoftwareCareerLink</h3>
-<p class="lead">SoftwareCareerLink is a platform designed to connect software engineers, particularly from Ethiopia, with career opportunities in the tech industry.</p>
+<p class="lead">SoftwareCareerLink is a platform designed to connect software engineers, particularly from Ethiopia, with career opportunities in the tech industry.</p>  {# Brief introduction about the platform #}
 
 <h2 class="text-center my-3">Job Openings</h2>
 <div>
-    {% for job in jobs %}
-    {% include 'jobitem.html' %}
+    {% for job in jobs %}  {# Loop through each job listing #}
+    {% include 'jobitem.html' %}  {# Include job item template for each job #}
     {% endfor %}
 </div>
 {% endblock %}

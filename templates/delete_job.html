@@ -1,67 +1,67 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 <head>
     {% block content %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Job</title>
+    <meta charset="UTF-8">  {# Character encoding for proper text display #}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  {# Ensures proper scaling on different devices #}
+    <title>Delete Job</title>  {# Page title displayed in the browser tab #}
     <style>
         /* Internal CSS for styling */
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: Arial, sans-serif;  {# Sets the font for the page #}
+            margin: 20px;  {# Adds margin around the body content #}
         }
 
         h1 {
-            color: #333;
+            color: #333;  {# Sets color for the main heading #}
         }
 
         .confirm-box {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            max-width: 400px;
-            margin: 0 auto;
-            text-align: center;
+            background-color: #f8f9fa;  {# Light background color for the confirmation box #}
+            padding: 20px;  {# Adds padding inside the box #}
+            border-radius: 5px;  {# Rounds the corners of the box #}
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);  {# Adds shadow to the box for depth #}
+            max-width: 400px;  {# Limits the width of the box #}
+            margin: 0 auto;  {# Centers the box horizontally #}
+            text-align: center;  {# Centers text inside the box #}
         }
 
         button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
+            background-color: #007bff;  {# Primary button color #}
+            color: white;  {# Text color for the button #}
+            border: none;  {# Removes border from the button #}
+            padding: 10px 20px;  {# Adds padding inside the button #}
+            border-radius: 4px;  {# Rounds the corners of the button #}
+            cursor: pointer;  {# Changes cursor to pointer on hover #}
+            margin: 5px;  {# Adds margin around the button #}
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3;  {# Darkens button color on hover #}
         }
 
         .cancel-button {
-            background-color: #6c757d;
+            background-color: #6c757d;  {# Secondary button color #}
         }
 
         .cancel-button:hover {
-            background-color: #5a6268;
+            background-color: #5a6268;  {# Darkens secondary button color on hover #}
         }
     </style>
 </head>
 <body>
-    <h1>Delete Job</h1>
+    <h1>Delete Job</h1>  {# Main heading for the delete confirmation page #}
     <div class="confirm-box">
-        <p>Are you sure you want to delete this job?</p>
+        <p>Are you sure you want to delete this job?</p>  {# Confirmation message #}
         <form id="delete-form" action="{{ url_for('delete_job', job_id=job['id']) }}" method="post">
-            <button type="submit">Yes</button>
-            <button type="button" class="cancel-button" onclick="window.location.href='{{ url_for('admin_dashboard') }}'">No</button>
+            <button type="submit">Yes</button>  {# Button to confirm deletion #}
+            <button type="button" class="cancel-button" onclick="window.location.href='{{ url_for('admin_dashboard') }}'">No</button>  {# Button to cancel deletion and go back to dashboard #}
         </form>
     </div>
 
     <script>
         // Optional: JavaScript to confirm deletion on form submission
         document.getElementById('delete-form').onsubmit = function() {
-            return confirm('Are you sure you want to delete this job?');
+            return confirm('Are you sure you want to delete this job?');  {# Confirmation dialog before submitting the form #}
         }
     </script>
 </body>

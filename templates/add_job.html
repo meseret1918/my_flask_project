@@ -7,6 +7,7 @@
 
 <!-- Internal CSS for styling the form -->
 <style>
+    /* Styling the form container with max width, padding, background color, border radius, and shadow for better appearance */
     form {
         max-width: 600px;
         margin: 0 auto;
@@ -16,12 +17,14 @@
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
+    /* Styling labels for form fields with bold text and proper margin */
     label {
         display: block;
         margin-bottom: 8px;
         font-weight: bold;
     }
 
+    /* Input and textarea styling for full width, padding, and border */
     input[type="text"], textarea {
         width: 100%;
         padding: 8px;
@@ -30,11 +33,13 @@
         border-radius: 4px;
     }
 
+    /* Textarea specific styling for height and resizing */
     textarea {
         height: 100px;
         resize: vertical;
     }
 
+    /* Button styling with background color, padding, and hover effect */
     button {
         background-color: #4CAF50;
         color: white;
@@ -44,10 +49,12 @@
         cursor: pointer;
     }
 
+    /* Button hover effect for better user interaction */
     button:hover {
         background-color: #45a049;
     }
 
+    /* Error message styling with red color and smaller font size */
     .error {
         color: red;
         font-size: 0.875em;
@@ -56,47 +63,59 @@
     }
 </style>
 <body>
+<!-- Form to submit new job details, with client-side validation using onsubmit event -->
 <form action="{{ url_for('add_job') }}" method="post" onsubmit="return validateForm()">
     <label for="title">Title:</label>
+    <!-- Job title input field -->
     <input type="text" id="title" name="title" placeholder="Enter job title" required><br>
 
     <label for="location">Location:</label>
+    <!-- Job location input field -->
     <input type="text" id="location" name="location" placeholder="Enter job location" required><br>
 
     <label for="salary">Salary:</label>
+    <!-- Job salary input field with placeholder -->
     <input type="text" id="salary" name="salary" placeholder="Enter job salary" required>
+    <!-- Placeholder div to display error message if salary validation fails -->
     <div id="salary-error" class="error"></div><br>
 
     <label for="currency">Currency:</label>
+    <!-- Currency input field for salary -->
     <input type="text" id="currency" name="currency" placeholder="Enter currency" required><br>
 
     <label for="responsibilities">Responsibilities:</label>
+    <!-- Text area for job responsibilities -->
     <textarea id="responsibilities" name="responsibilities" placeholder="Enter job responsibilities" required></textarea><br>
 
     <label for="requirements">Requirements:</label>
+    <!-- Text area for job requirements -->
     <textarea id="requirements" name="requirements" placeholder="Enter job requirements" required></textarea><br>
 
+    <!-- Submit button for form submission -->
     <button type="submit">Add</button>
     
-        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+    <!-- Link to navigate back to the admin dashboard -->
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
 </form>
 </body>
 <script>
+/* Client-side form validation for salary field */
 function validateForm() {
     var salaryInput = document.getElementById('salary');
     var salaryValue = salaryInput.value;
     var salaryError = document.getElementById('salary-error');
     var isValid = true;
 
-    // Remove any previous error message
+    // Clear any previous error message
     salaryError.textContent = '';
 
-    // Check if the salary is a valid number
+    // Check if the salary is a valid number (up to two decimal places)
     if (!/^\d+(\.\d{1,2})?$/.test(salaryValue)) {
         salaryError.textContent = 'Invalid salary value. Please enter a numeric value with up to two decimal places.';
         isValid = false;
     }
 
+    // Return the validity status of the form
     return isValid;
 }
 </script>

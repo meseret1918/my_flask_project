@@ -1,72 +1,72 @@
 {% extends "index.html" %}
 <head>
     {% block content %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Job</title>
+    <meta charset="UTF-8">  {# Character encoding for proper text display #}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  {# Ensures proper scaling on different devices #}
+    <title>Edit Job</title>  {# Page title displayed in the browser tab #}
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;  {# Sets the font for the page #}
+            margin: 0;  {# Removes default margin #}
+            padding: 0;  {# Removes default padding #}
+            background-color: #f4f4f4;  {# Light gray background color #}
         }
 
         h1 {
-            text-align: center;
-            color: #333;
-            margin-top: 20px;
+            text-align: center;  {# Centers the main heading #}
+            color: #333;  {# Sets color for the main heading #}
+            margin-top: 20px;  {# Adds top margin to the heading #}
         }
 
         form {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 600px;  {# Limits the width of the form #}
+            margin: 20px auto;  {# Centers the form horizontally and adds vertical margin #}
+            padding: 20px;  {# Adds padding inside the form #}
+            background-color: #fff;  {# White background for the form #}
+            border-radius: 8px;  {# Rounds the corners of the form #}
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);  {# Adds shadow to the form for depth #}
         }
 
         label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
+            display: block;  {# Displays label as a block element #}
+            margin-bottom: 8px;  {# Adds margin below labels #}
+            font-weight: bold;  {# Makes label text bold #}
         }
 
         input[type="text"], textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            width: 100%;  {# Makes input and textarea fields full-width #}
+            padding: 8px;  {# Adds padding inside input fields #}
+            margin-bottom: 12px;  {# Adds margin below input fields #}
+            border: 1px solid #ddd;  {# Light border color for input fields #}
+            border-radius: 4px;  {# Rounds the corners of input fields #}
         }
 
         textarea {
-            height: 100px;
-            resize: vertical;
+            height: 100px;  {# Sets a fixed height for textareas #}
+            resize: vertical;  {# Allows vertical resizing of textareas #}
         }
 
         button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
+            background-color: #4CAF50;  {# Green background color for the button #}
+            color: white;  {# White text color for the button #}
+            border: none;  {# Removes border from the button #}
+            padding: 10px 20px;  {# Adds padding inside the button #}
+            border-radius: 4px;  {# Rounds the corners of the button #}
+            cursor: pointer;  {# Changes cursor to pointer on hover #}
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #45a049;  {# Darkens button color on hover #}
         }
 
         .container {
-            text-align: left;
-            margin-top: 20px;
+            text-align: left;  {# Aligns text to the left within the container #}
+            margin-top: 20px;  {# Adds top margin to the container #}
         }
     </style>
 </head>
 <body>
-    <h1>Edit Job</h1>
+    <h1>Edit Job</h1>  {# Main heading for the edit job page #}
     <form method="post">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" value="{{ job['title'] }}" required><br>
@@ -80,7 +80,7 @@
         <textarea id="responsibilities" name="responsibilities" required>{{ job['responsibilities'] }}</textarea><br>
         <label for="requirements">Requirements:</label>
         <textarea id="requirements" name="requirements" required>{{ job['requirements'] }}</textarea><br>
-        <button type="submit">Update Job</button>
+        <button type="submit">Update Job</button>  {# Button to submit the form and update the job #}
     </form>
 </body>
 {% endblock %}

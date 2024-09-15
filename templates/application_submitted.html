@@ -6,44 +6,44 @@
     <!-- Application Submission Details -->
     <div class="card shadow-sm">
         <div class="card-body">
-            <h4 class="text-center">Application Submitted</h4>
-            <p class="text-center my-3">Your application for the role of <b>{{ job.title }}</b> at SoftwareCareerLink has been successfully submitted.</p>
-              <p class="text-center my-3">We appreciate your interest and will review your application soon.</p>
+            <h4 class="text-center">Application Submitted</h4>  {# Heading indicating that the application has been submitted #}
+            <p class="text-center my-3">Your application for the role of <b>{{ job.title }}</b> at SoftwareCareerLink has been successfully submitted.</p>  {# Confirmation message showing the job title #}
+            <p class="text-center my-3">We appreciate your interest and will review your application soon.</p>  {# Message expressing appreciation and indicating next steps #}
 
             <hr>
             <!-- Application Data -->
             <div class="mt-4">
                 <b>Full Name:</b>
-                <p>{{ data.full_name }}</p>
+                <p>{{ data.full_name }}</p>  {# Displays the applicant's full name #}
 
                 <b>Email:</b>
-                <p>{{ data.email }}</p>
+                <p>{{ data.email }}</p>  {# Displays the applicant's email address #}
 
                 <b>LinkedIn URL:</b>
                 <p>
-                    {% if data.linkedin_url %}
-                        <a href="{{ data.linkedin_url }}" target="_blank">{{ data.linkedin_url }}</a>
+                    {% if data.linkedin_url %}  {# Check if LinkedIn URL is provided #}
+                        <a href="{{ data.linkedin_url }}" target="_blank">{{ data.linkedin_url }}</a>  {# Displays LinkedIn URL as a clickable link #}
                     {% else %}
-                        None
+                        None  {# Displays 'None' if no LinkedIn URL is provided #}
                     {% endif %}
                 </p>
 
                 <b>Education:</b>
-                <p>{{ data.education }}</p>
+                <p>{{ data.education }}</p>  {# Displays the applicant's education #}
 
                 <b>Work Experience:</b>
-                <p>{{ data.work_experience }} years</p>
+                <p>{{ data.work_experience }} years</p>  {# Displays the applicant's work experience in years #}
 
                 <b>Resume URL:</b>
                 <p>
-                    {% if data.resume_url %}
-                        <a href="{{ data.resume_url }}" target="_blank">{{ data.resume_url }}</a>
+                    {% if data.resume_url %}  {# Check if Resume URL is provided #}
+                        <a href="{{ data.resume_url }}" target="_blank">{{ data.resume_url }}</a>  {# Displays Resume URL as a clickable link #}
                     {% else %}
-                        None
+                        None  {# Displays 'None' if no Resume URL is provided #}
                     {% endif %}
                 </p>
                 <div class="container">
-                    <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to home</a>
+                    <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to home</a>  {# Link to navigate back to the home page #}
                 </div>
             </div>
     </div>

@@ -70,13 +70,20 @@ def job_item(job_id):
     else:
         return "Job not found", 404  # Return 404 if job not found
 # Route for admin login page
+from flask import Flask, request, redirect, url_for, session, flash, render_template
+from sqlalchemy import text
+from werkzeug.security import check_password_hash
+
+# Route for admin login page
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
 
-        result = db.session.execute("SELECT * FROM admin_logins WHERE username = :username", {'username': username})
+        # Use text() to handle raw SQL queries
+        query = text("SELECT * FROM admin_logins WHERE username = :username")
+        result = db.session.execute(query, {'username': username})
         admin = result.mappings().first()  # Retrieve admin user from the database
 
         if admin and check_password_hash(admin['password'], password):  # Check password hash
@@ -87,6 +94,7 @@ def admin_login():
             return redirect(url_for('admin_login'))  # Redirect to admin login page
 
     return render_template('admin_login.html')  # Render admin login page template
+
 
 # Route for admin dashboard
 @app.route('/admin/dashboard')
